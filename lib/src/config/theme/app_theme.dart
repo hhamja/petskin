@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:petskin/config/const/app_color.dart';
+import 'package:petskin/src/config/constant/app_color.dart';
 
 class AppThemeData {
   static final ThemeData appTheme = ThemeData(
@@ -24,7 +24,7 @@ class AppThemeData {
         size: 26,
       ),
     ),
-
+    textTheme: const TextTheme(),
     // 바텀시트
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: BLACK_COLOR,

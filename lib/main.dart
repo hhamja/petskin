@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:petskin/config/const/app_name.dart';
-import 'package:petskin/config/theme/app_theme.dart';
-import 'package:petskin/core/view/splash/splash.dart';
+import 'package:petskin/src/config/constant/app_name.dart';
+import 'package:petskin/src/config/theme/app_theme.dart';
+import 'package:petskin/src/core/view/splash/splash.dart';
 import 'firebase_options.dart';
 
 void main() async {

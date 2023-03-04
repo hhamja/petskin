@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:petskin/config/const/app_name.dart';
-import 'package:petskin/config/const/app_space.dart';
-import 'package:petskin/core/view/permission_guide/permission_item.dart';
+import 'package:petskin/src/config/constant/app_name.dart';
+import 'package:petskin/src/config/constant/app_space.dart';
+import 'package:petskin/src/core/view/permission_guide/permission_item.dart';
 
 class PermissionGuidePage extends StatelessWidget {
   const PermissionGuidePage({super.key});
