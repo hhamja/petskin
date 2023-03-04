@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "120842213188",
+    "project_id": "petskin-e0e8f",
+    "storage_bucket": "petskin-e0e8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120842213188:android:31c930edabd0a2cb726911",
+        "android_client_info": {
+          "package_name": "com.petskin.petskin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120842213188-5oagpl0lvlmseapi1qcflru9o4b7rc8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjrE3Ck3UJ5l5eoIAdKWjPoWcIjWRQ7Zc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120842213188-5oagpl0lvlmseapi1qcflru9o4b7rc8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
