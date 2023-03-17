@@ -13,25 +13,27 @@ class AppThemeData {
     ),
     // 앱바
     appBarTheme: const AppBarTheme(
+      titleTextStyle: TextStyle(color: TEXT_COLOR),
       elevation: 0,
       backgroundColor: WHITE_COLOR,
+      centerTitle: false,
       iconTheme: IconThemeData(
-        color: BLACK_COLOR,
+        color: TEXT_COLOR,
         size: 26,
       ),
       actionsIconTheme: IconThemeData(
-        color: BLACK_COLOR,
+        color: TEXT_COLOR,
         size: 26,
       ),
     ),
-    textTheme: const TextTheme(),
+
     // 바텀시트
     bottomSheetTheme: const BottomSheetThemeData(
-      backgroundColor: BLACK_COLOR,
+      backgroundColor: WHITE_COLOR,
       elevation: 0,
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: BLACK_COLOR,
+      backgroundColor: WHITE_COLOR,
       elevation: 0,
     ),
     // 앱 기본 폰트
