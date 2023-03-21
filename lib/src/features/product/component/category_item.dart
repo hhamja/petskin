@@ -19,28 +19,31 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            color: iconColor,
-            size: iconSize,
-          ),
-          const SizedBox(height: 5),
-          Text(
-            categoryText,
-            style: const TextStyle(
-              color: TEXT_COLOR,
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              color: iconColor,
+              size: iconSize,
             ),
-          ),
-        ],
+            const SizedBox(height: 5),
+            Text(
+              categoryText,
+              style: const TextStyle(
+                color: TEXT_COLOR,
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

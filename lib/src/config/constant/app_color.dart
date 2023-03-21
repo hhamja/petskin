@@ -15,7 +15,7 @@ const Color BLACK_COLOR = Color(0xFF000000);
 const Color WHITE_COLOR = Color(0xFFFFFFFF);
 
 // 회색
-const Color DEEP_DARK_GREY_COLOR = Color(0xFFFFFFFF);
-const Color DARK_GREY_COLOR = Color(0xFFFFFFFF);
+const Color DEEP_DARK_GREY_COLOR = Color(0xFF424242);
+const Color DARK_GREY_COLOR = Color(0xFF616161);
 const Color GREY_COLOR = Colors.grey;
-const Color LIGHT_GREY_COLOR = Color(0xFFFFFFFF);
+const Color LIGHT_GREY_COLOR = Color(0xFFEEEEEE);

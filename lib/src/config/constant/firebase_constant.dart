@@ -9,4 +9,8 @@ class FirebaseConstant {
   static const reportCollection = 'userReport';
   // 제품 리뷰 컬렉션 경로
   static const reviewCollection = 'productReview';
+
+  // 제품 테스트 이미지 url
+  static const productImg =
+      'https://firebasestorage.googleapis.com/v0/b/petskin-e0e8f.appspot.com/o/product%2FproductImg.jpg?alt=media';
 }

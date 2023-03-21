@@ -4,9 +4,11 @@ import 'package:petskin/src/config/constant/app_color.dart';
 class AppThemeData {
   static final ThemeData appTheme = ThemeData(
     brightness: Brightness.light,
-    // primaryColor: PRIMARY_COLOR,
-
     scaffoldBackgroundColor: WHITE_COLOR,
+    // primaryColor: PRIMARY_COLOR,
+    splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
+    splashFactory: NoSplash.splashFactory,
     // 게시글 추가하는 +버튼
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: PRIMARY_COLOR,
@@ -27,7 +29,6 @@ class AppThemeData {
         size: 26,
       ),
     ),
-
     // 바텀시트
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: WHITE_COLOR,

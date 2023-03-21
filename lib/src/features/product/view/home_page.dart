@@ -12,7 +12,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: Padding(
@@ -76,31 +75,27 @@ class HomePage extends StatelessWidget {
               style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
-              child: Row(
-                children: [
-                  CategoryItem(
-                    onTap: () async {
-                      context.router.push(const ProductListRoute());
-                    },
-                    categoryText: '샴푸',
-                    icon: CupertinoIcons.drop,
-                    iconColor: TEXT_COLOR,
-                    iconSize: 40,
-                  ),
-                  const SizedBox(width: 20),
-                  CategoryItem(
-                    onTap: () async {
-                      context.router.push(const UserAppFeedbackRoute());
-                    },
-                    categoryText: '더보기',
-                    icon: CupertinoIcons.add,
-                    iconColor: TEXT_COLOR,
-                    iconSize: 40,
-                  ),
-                ],
-              ),
+            Row(
+              children: [
+                CategoryItem(
+                  onTap: () async {
+                    context.router.push(const ProductListRoute());
+                  },
+                  categoryText: '샴푸',
+                  icon: CupertinoIcons.drop,
+                  iconColor: TEXT_COLOR,
+                  iconSize: 40,
+                ),
+                CategoryItem(
+                  onTap: () async {
+                    context.router.push(const UserAppFeedbackRoute());
+                  },
+                  categoryText: '더보기',
+                  icon: CupertinoIcons.add,
+                  iconColor: TEXT_COLOR,
+                  iconSize: 40,
+                ),
+              ],
             ),
           ],
         ),
