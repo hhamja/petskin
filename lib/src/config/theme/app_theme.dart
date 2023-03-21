@@ -14,6 +14,7 @@ class AppThemeData {
     // 앱바
     appBarTheme: const AppBarTheme(
       titleTextStyle: TextStyle(color: TEXT_COLOR),
+      toolbarTextStyle: TextStyle(color: TEXT_COLOR),
       elevation: 0,
       backgroundColor: WHITE_COLOR,
       centerTitle: false,

@@ -37,6 +37,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/pets/
   fonts:
     # 노토 산즈 kr
     - family: NotoSansCJKkr
