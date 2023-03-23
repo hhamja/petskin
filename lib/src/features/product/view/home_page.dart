@@ -79,7 +79,7 @@ class HomePage extends StatelessWidget {
               children: [
                 CategoryItem(
                   onTap: () async {
-                    context.router.push(const ProductListRoute());
+                    context.router.push(ProductListRoute());
                   },
                   categoryText: '샴푸',
                   icon: CupertinoIcons.drop,

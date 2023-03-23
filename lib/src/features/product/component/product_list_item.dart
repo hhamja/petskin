@@ -69,7 +69,7 @@ class ProductListItem extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

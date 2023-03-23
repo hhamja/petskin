@@ -3,6 +3,8 @@ class FirebaseConstant {
   static const userCollection = 'user';
   // 제품 컬렉션 경로
   static const productCollection = 'product';
+  // 성분 컬렉션 경로
+  static const ingredientCollection = 'ingredient';
   // 앱 피드백 컬렉션 경로
   static const feedbackCollection = 'appFeedback';
   // 유저 신고 컬렉션 경로

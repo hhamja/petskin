@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 
-part 'product_list_model.freezed.dart';
-part 'product_list_model.g.dart';
+part 'detail_product_model.freezed.dart';
+part 'detail_product_model.g.dart';
 
 @freezed
-class ProductListModel with _$ProductListModel {
-  const factory ProductListModel({
+class DetailProductModel with _$DetailProductModel {
+  const factory DetailProductModel({
     required String id,
-    // 카테고리
-    // required String category,
     // 제품 사진
     // required String photoUrl,
     // 브랜드 명
     required String brand,
     // 제품 이름
     required String productName,
+    // 성분 리스트
+    required List<int> ingredient,
     // 제품 용량
     required String volume,
     // 가격
@@ -25,15 +25,15 @@ class ProductListModel with _$ProductListModel {
         required String price,
     // 평점 점수의 총합
     // 나중에 총 수/ 리뷰 수 = 평균 평점 구현
-    required int totalScore,
-    required int reivewCount,
+    // required int totalScore,
+    // required int reivewCount,
     // 제품 등록 시간
     @JsonKey(fromJson: _createdAtFromJson, toJson: _createdAtToJson)
         required Timestamp createdAt,
-  }) = _ProductListModel;
+  }) = _DetailProductModel;
 
-  factory ProductListModel.fromJson(Map<String, dynamic> json) =>
-      _$ProductListModelFromJson(json);
+  factory DetailProductModel.fromJson(Map<String, dynamic> json) =>
+      _$DetailProductModelFromJson(json);
 }
 
 // 타임스탬프 변환

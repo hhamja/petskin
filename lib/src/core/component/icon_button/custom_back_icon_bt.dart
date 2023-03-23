@@ -1,11 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomBackButton extends StatelessWidget {
-  final void Function() onTap;
-
   const CustomBackButton({
-    required this.onTap,
     super.key,
   });
 
@@ -14,7 +12,9 @@ class CustomBackButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: InkWell(
-        onTap: onTap,
+        onTap: () async {
+          context.router.pop();
+        },
         child: const Icon(CupertinoIcons.back),
       ),
     );

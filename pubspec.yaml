@@ -22,6 +22,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
   intl: ^0.18.0
+  tuple: ^2.0.1
   
 dev_dependencies:
   flutter_test:
