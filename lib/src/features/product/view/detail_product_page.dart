@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
 import 'package:petskin/src/config/constant/firebase_constant.dart';
 import 'package:petskin/src/config/router/app_router.gr.dart';
+import 'package:petskin/src/core/component/default_layout/default_layout.dart';
 import 'package:petskin/src/core/component/icon_button/custom_back_icon_bt.dart';
 import 'package:petskin/src/core/component/loading/circular_loading.dart';
 import 'package:petskin/src/features/product/component/detail_product.dart';
@@ -18,53 +19,81 @@ class DetailProductPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final product = ref.watch(productDetailProvider(id));
+    final ingredient = ref.watch(ingredientProvider(id));
 
-    return Scaffold(
-      appBar: AppBar(
-        leading: const CustomBackButton(),
-        actions: [
-          InkWell(
-            onTap: () async {
-              context.router.push(const SearchRoute());
-            },
-            child: const Padding(
-              padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-              child: Icon(CupertinoIcons.search),
-            ),
+    return DefaultLayout(
+      leading: const CustomBackButton(),
+      actions: [
+        InkWell(
+          onTap: () async {
+            context.router.push(const PushSearchRoute());
+          },
+          child: const Padding(
+            padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
+            child: Icon(CupertinoIcons.search),
           ),
-        ],
-      ),
+        ),
+      ],
       body: product.when(
+        // 에러 커스텀 위젯으로 다루기
         error: (error, stackTrace) => const Center(
-          child: Text('에러입니다'),
+          child: Text('네트워크 에러'),
         ),
         loading: () => const CustomCircularLoading(),
-        data: (data) => SingleChildScrollView(
+        data: (product) => SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // 제품 사진
               SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  child: Image.network(FirebaseConstant.productImg)),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: Image.network(FirebaseConstant.productImg),
+              ),
               ProductDetailBox(
-                brand: data.item1.brand,
-                price: data.item1.price,
-                productName: data.item1.productName,
-                volume: data.item1.volume,
+                brand: product.brand,
+                price: product.price,
+                productName: product.productName,
+                volume: product.volume,
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 29.0),
                 child: Divider(
                   color: LIGHT_GREY_COLOR,
-                  thickness: 5,
+                  thickness: 3,
                 ),
               ),
-              ProductIngredientBox(
-                totalIngredient: data.item2.length,
-                riskIngredient: 1,
+              ingredient.when(
+                data: (ingredientList) {
+                  final List<String> ewgList = ingredientList.map((ingredient) {
+                    final int dashIndex = ingredient.ewg.indexOf('-');
+                    if (dashIndex != -1) {
+                      // '-' 이후 문자열 추출
+                      return ingredient.ewg.substring(dashIndex + 1);
+                    } else {
+                      // 그대로 반환
+                      return ingredient.ewg;
+                    }
+                  }).toList();
+                  final List<String> ewgRiskList = ewgList
+                      .where((result) =>
+                          int.tryParse(result) != null &&
+                          int.parse(result) >= 3)
+                      .toList();
+                  return ProductIngredientBox(
+                    onTap: () async {
+                      context.router.push(
+                          IngredientListRoute(ingredientList: ingredientList));
+                    },
+                    totalIngredient: ingredientList.length,
+                    riskIngredient: ewgRiskList.length,
+                  );
+                },
+                error: (error, stackTrace) => const Center(
+                  child: Text('에러입니다'),
+                ),
+                loading: () => const CustomCircularLoading(),
               ),
             ],
           ),

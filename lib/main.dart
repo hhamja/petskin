@@ -1,14 +1,20 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:petskin/firebase_options.dart';
 import 'package:petskin/src/config/constant/app_name.dart';
+import 'package:petskin/src/config/constant/supabase_constant.dart';
 import 'package:petskin/src/config/router/app_router.gr.dart';
 import 'package:petskin/src/config/theme/app_theme.dart';
-import 'firebase_options.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Supabase.initialize(
+    url: SupabseConstant.projectUrl,
+    anonKey: SupabseConstant.anonKey,
+  );
 
   runApp(
     ProviderScope(

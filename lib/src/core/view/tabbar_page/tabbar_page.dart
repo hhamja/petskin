@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
 import 'package:petskin/src/features/product/view/home_page.dart';
-import 'package:petskin/src/features/product/view/search_page.dart';
+import 'package:petskin/src/features/product/view/home_search_page.dart';
+import 'package:petskin/src/features/product/view/push_search_page.dart';
 import 'package:petskin/src/features/user/view/setting_page.dart';
 
 class TabbarPage extends StatefulWidget {
@@ -46,7 +47,7 @@ class _TabbarPageState extends State<TabbarPage>
         controller: controller,
         children: const [
           HomePage(),
-          SearchPage(),
+          HomeSearchPage(),
           SettingPage(),
         ],
       ),

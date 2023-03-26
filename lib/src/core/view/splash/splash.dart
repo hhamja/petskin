@@ -4,7 +4,6 @@ import 'package:petskin/src/config/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
 import 'package:petskin/src/config/constant/app_name.dart';
-import 'package:petskin/src/features/product/view/home_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);

@@ -38,9 +38,7 @@ class CustomOutlineTextButton extends StatelessWidget {
         child: Text(
           content,
           style: TextStyle(
-            // fontSize: AppTextStyle.fullButtonTextStyle.fontSize,
-            // letterSpacing: AppTextStyle.fullButtonTextStyle.letterSpacing,
-            // fontWeight: AppTextStyle.fullButtonTextStyle.fontWeight,
+            fontSize: 16,
             color: color,
           ),
         ),

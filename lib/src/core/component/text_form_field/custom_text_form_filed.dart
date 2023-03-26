@@ -5,13 +5,21 @@ import 'package:petskin/src/config/constant/app_color.dart';
 class CustomTextFormField extends StatefulWidget {
   final String? hintText;
   final String? labelText;
-  final controller;
+  final TextEditingController controller;
+  final void Function(String)? onFieldSubmitted;
+  final void Function(String)? onChanged;
+  final void Function()? onTap;
+  final FocusNode? focusNode;
 
   const CustomTextFormField({
+    required this.controller,
     this.labelText,
     this.hintText,
-    this.controller,
+    this.onFieldSubmitted,
+    this.focusNode,
+    this.onTap,
     super.key,
+    this.onChanged,
   });
 
   @override
@@ -22,19 +30,28 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: TextInputType.text,
+      focusNode: widget.focusNode,
       cursorColor: Colors.blue,
-      style: Theme.of(context).textTheme.titleMedium,
+      style: const TextStyle(
+        fontSize: 20,
+        height: 1.5,
+      ),
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        floatingLabelAlignment: FloatingLabelAlignment.center,
+        floatingLabelAlignment: FloatingLabelAlignment.start,
         hintText: widget.hintText,
         fillColor: WHITE_COLOR,
-        hintStyle: TextStyle(
-          fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+        hintStyle: const TextStyle(
+          fontSize: 20,
+          height: 1.5,
           color: GREY_COLOR,
         ),
         labelText: widget.labelText,
-        labelStyle: Theme.of(context).textTheme.titleSmall,
+        labelStyle: const TextStyle(
+          fontSize: 12,
+          color: TEXT_COLOR,
+        ),
         counterText: '',
         border: InputBorder.none,
       ),
@@ -43,19 +60,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       maxLines: 1,
       showCursor: true,
       controller: widget.controller,
-      // 닉네임 최대글자 12자
-      maxLength: 12,
+      maxLength: 50,
       textAlignVertical: TextAlignVertical.center,
-      textAlign: TextAlign.center,
+      textAlign: TextAlign.left,
       maxLengthEnforcement: MaxLengthEnforcement.enforced,
-      onChanged: (value) {
-        setState(() {});
-      },
-      inputFormatters: [
-        FilteringTextInputFormatter.allow(
-          RegExp(r'[a-z|A-Z|0-9|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]'),
-        ),
-      ],
+      onChanged: widget.onChanged,
+      onTap: widget.onTap,
+      onFieldSubmitted: widget.onFieldSubmitted,
     );
   }
 }

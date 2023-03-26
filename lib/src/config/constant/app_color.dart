@@ -19,3 +19,8 @@ const Color DEEP_DARK_GREY_COLOR = Color(0xFF424242);
 const Color DARK_GREY_COLOR = Color(0xFF616161);
 const Color GREY_COLOR = Colors.grey;
 const Color LIGHT_GREY_COLOR = Color(0xFFFAFAFA);
+
+const Color LOW_EWG_COLOR = Color(0xFF35BB89);
+const Color MEDIUM_EWG_COLOR = Color(0xFFF6C723);
+const Color HIGH_EWG_COLOR = Color(0xFFEB5862);
+const Color NO_EWG_COLOR = Color(0xFFC9C9C9);

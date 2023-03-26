@@ -17,39 +17,36 @@ class ProductDetailBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            brand,
-            style: const TextStyle(
-              fontSize: 16,
-              color: GREY_COLOR,
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          brand,
+          style: const TextStyle(
+            fontSize: 16,
+            color: GREY_COLOR,
           ),
-          const SizedBox(height: 8),
-          Text(
-            productName,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontSize: 20,
-              color: TEXT_COLOR,
-            ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          productName,
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            fontSize: 20,
+            color: TEXT_COLOR,
           ),
-          const SizedBox(height: 8),
-          Text(
-            '$volume / $price',
-            style: const TextStyle(
-              fontSize: 16,
-              color: GREY_COLOR,
-            ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          '$volume / $price',
+          style: const TextStyle(
+            fontSize: 16,
+            color: GREY_COLOR,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

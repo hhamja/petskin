@@ -28,7 +28,7 @@ class ProductListPage extends ConsumerWidget {
       actions: [
         InkWell(
           onTap: () async {
-            context.router.push(const SearchRoute());
+            context.router.push(const PushSearchRoute());
           },
           child: const Padding(
             padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
@@ -42,6 +42,7 @@ class ProductListPage extends ConsumerWidget {
         ),
         loading: () => const CustomCircularLoading(),
         data: (data) => ListView.separated(
+          itemCount: data.length,
           controller: _controller,
           separatorBuilder: (context, index) => const Divider(
             color: LIGHT_GREY_COLOR,
@@ -50,9 +51,11 @@ class ProductListPage extends ConsumerWidget {
           ),
           itemBuilder: (context, index) => ProductListItem(
             onTap: () async {
-              context.router.push(DetailProductRoute(
-                id: data[index].id,
-              ));
+              context.router.push(
+                DetailProductRoute(
+                  id: data[index].id,
+                ),
+              );
             },
             brand: data[index].brand,
             photoUrl: FirebaseConstant.productImg,
@@ -60,7 +63,6 @@ class ProductListPage extends ConsumerWidget {
             productName: data[index].productName,
             volume: data[index].volume,
           ),
-          itemCount: data.length,
         ),
       ),
     );

@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
         ),
         title: GestureDetector(
           onTap: () async {
-            context.router.push(const SearchRoute());
+            context.router.push(const PushSearchRoute());
           },
           child: Container(
             width: MediaQuery.of(context).size.width,
@@ -69,12 +69,12 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const HomePageImg(),
-            const SizedBox(height: 30),
+            const SizedBox(height: 34),
             const Text(
               '카테고리',
               style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 21),
             Row(
               children: [
                 CategoryItem(

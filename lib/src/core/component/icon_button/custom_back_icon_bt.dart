@@ -9,13 +9,13 @@ class CustomBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5),
-      child: InkWell(
-        onTap: () async {
-          context.router.pop();
-        },
-        child: const Icon(CupertinoIcons.back),
+    return InkWell(
+      onTap: () async {
+        context.router.pop();
+      },
+      child: const Padding(
+        padding: EdgeInsets.fromLTRB(5, 10, 16, 10),
+        child: Icon(CupertinoIcons.back),
       ),
     );
   }

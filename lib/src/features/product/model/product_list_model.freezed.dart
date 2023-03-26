@@ -21,20 +21,14 @@ ProductListModel _$ProductListModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProductListModel {
   String get id => throw _privateConstructorUsedError; // 카테고리
-// required String category,
-// 제품 사진
-// required String photoUrl,
-// 브랜드 명
+  String get category => throw _privateConstructorUsedError; // 제품 사진
+  String get thumbnailImage => throw _privateConstructorUsedError; // 브랜드 명
   String get brand => throw _privateConstructorUsedError; // 제품 이름
   String get productName => throw _privateConstructorUsedError; // 제품 용량
   String get volume => throw _privateConstructorUsedError; // 가격
   @PriceConverter()
-  String get price => throw _privateConstructorUsedError; // 평점 점수의 총합
-// 나중에 총 수/ 리뷰 수 = 평균 평점 구현
-  int get totalScore => throw _privateConstructorUsedError;
-  int get reivewCount => throw _privateConstructorUsedError; // 제품 등록 시간
-  @JsonKey(fromJson: _createdAtFromJson, toJson: _createdAtToJson)
-  Timestamp get createdAt => throw _privateConstructorUsedError;
+  String get price => throw _privateConstructorUsedError; // 제품 등록 시간
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,15 +44,13 @@ abstract class $ProductListModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String category,
+      String thumbnailImage,
       String brand,
       String productName,
       String volume,
-      @PriceConverter()
-          String price,
-      int totalScore,
-      int reivewCount,
-      @JsonKey(fromJson: _createdAtFromJson, toJson: _createdAtToJson)
-          Timestamp createdAt});
+      @PriceConverter() String price,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -75,18 +67,26 @@ class _$ProductListModelCopyWithImpl<$Res, $Val extends ProductListModel>
   @override
   $Res call({
     Object? id = null,
+    Object? category = null,
+    Object? thumbnailImage = null,
     Object? brand = null,
     Object? productName = null,
     Object? volume = null,
     Object? price = null,
-    Object? totalScore = null,
-    Object? reivewCount = null,
     Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      thumbnailImage: null == thumbnailImage
+          ? _value.thumbnailImage
+          : thumbnailImage // ignore: cast_nullable_to_non_nullable
               as String,
       brand: null == brand
           ? _value.brand
@@ -104,18 +104,10 @@ class _$ProductListModelCopyWithImpl<$Res, $Val extends ProductListModel>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String,
-      totalScore: null == totalScore
-          ? _value.totalScore
-          : totalScore // ignore: cast_nullable_to_non_nullable
-              as int,
-      reivewCount: null == reivewCount
-          ? _value.reivewCount
-          : reivewCount // ignore: cast_nullable_to_non_nullable
-              as int,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as Timestamp,
+              as DateTime,
     ) as $Val);
   }
 }
@@ -130,15 +122,13 @@ abstract class _$$_ProductListModelCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
+      String category,
+      String thumbnailImage,
       String brand,
       String productName,
       String volume,
-      @PriceConverter()
-          String price,
-      int totalScore,
-      int reivewCount,
-      @JsonKey(fromJson: _createdAtFromJson, toJson: _createdAtToJson)
-          Timestamp createdAt});
+      @PriceConverter() String price,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -153,18 +143,26 @@ class __$$_ProductListModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? category = null,
+    Object? thumbnailImage = null,
     Object? brand = null,
     Object? productName = null,
     Object? volume = null,
     Object? price = null,
-    Object? totalScore = null,
-    Object? reivewCount = null,
     Object? createdAt = null,
   }) {
     return _then(_$_ProductListModel(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      thumbnailImage: null == thumbnailImage
+          ? _value.thumbnailImage
+          : thumbnailImage // ignore: cast_nullable_to_non_nullable
               as String,
       brand: null == brand
           ? _value.brand
@@ -182,18 +180,10 @@ class __$$_ProductListModelCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String,
-      totalScore: null == totalScore
-          ? _value.totalScore
-          : totalScore // ignore: cast_nullable_to_non_nullable
-              as int,
-      reivewCount: null == reivewCount
-          ? _value.reivewCount
-          : reivewCount // ignore: cast_nullable_to_non_nullable
-              as int,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as Timestamp,
+              as DateTime,
     ));
   }
 }
@@ -203,15 +193,13 @@ class __$$_ProductListModelCopyWithImpl<$Res>
 class _$_ProductListModel implements _ProductListModel {
   const _$_ProductListModel(
       {required this.id,
+      required this.category,
+      required this.thumbnailImage,
       required this.brand,
       required this.productName,
       required this.volume,
-      @PriceConverter()
-          required this.price,
-      required this.totalScore,
-      required this.reivewCount,
-      @JsonKey(fromJson: _createdAtFromJson, toJson: _createdAtToJson)
-          required this.createdAt});
+      @PriceConverter() required this.price,
+      required this.createdAt});
 
   factory _$_ProductListModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProductListModelFromJson(json);
@@ -219,9 +207,11 @@ class _$_ProductListModel implements _ProductListModel {
   @override
   final String id;
 // 카테고리
-// required String category,
+  @override
+  final String category;
 // 제품 사진
-// required String photoUrl,
+  @override
+  final String thumbnailImage;
 // 브랜드 명
   @override
   final String brand;
@@ -235,20 +225,13 @@ class _$_ProductListModel implements _ProductListModel {
   @override
   @PriceConverter()
   final String price;
-// 평점 점수의 총합
-// 나중에 총 수/ 리뷰 수 = 평균 평점 구현
-  @override
-  final int totalScore;
-  @override
-  final int reivewCount;
 // 제품 등록 시간
   @override
-  @JsonKey(fromJson: _createdAtFromJson, toJson: _createdAtToJson)
-  final Timestamp createdAt;
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'ProductListModel(id: $id, brand: $brand, productName: $productName, volume: $volume, price: $price, totalScore: $totalScore, reivewCount: $reivewCount, createdAt: $createdAt)';
+    return 'ProductListModel(id: $id, category: $category, thumbnailImage: $thumbnailImage, brand: $brand, productName: $productName, volume: $volume, price: $price, createdAt: $createdAt)';
   }
 
   @override
@@ -257,23 +240,23 @@ class _$_ProductListModel implements _ProductListModel {
         (other.runtimeType == runtimeType &&
             other is _$_ProductListModel &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.thumbnailImage, thumbnailImage) ||
+                other.thumbnailImage == thumbnailImage) &&
             (identical(other.brand, brand) || other.brand == brand) &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.volume, volume) || other.volume == volume) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.totalScore, totalScore) ||
-                other.totalScore == totalScore) &&
-            (identical(other.reivewCount, reivewCount) ||
-                other.reivewCount == reivewCount) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, brand, productName, volume,
-      price, totalScore, reivewCount, createdAt);
+  int get hashCode => Object.hash(runtimeType, id, category, thumbnailImage,
+      brand, productName, volume, price, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -292,15 +275,13 @@ class _$_ProductListModel implements _ProductListModel {
 abstract class _ProductListModel implements ProductListModel {
   const factory _ProductListModel(
       {required final String id,
+      required final String category,
+      required final String thumbnailImage,
       required final String brand,
       required final String productName,
       required final String volume,
-      @PriceConverter()
-          required final String price,
-      required final int totalScore,
-      required final int reivewCount,
-      @JsonKey(fromJson: _createdAtFromJson, toJson: _createdAtToJson)
-          required final Timestamp createdAt}) = _$_ProductListModel;
+      @PriceConverter() required final String price,
+      required final DateTime createdAt}) = _$_ProductListModel;
 
   factory _ProductListModel.fromJson(Map<String, dynamic> json) =
       _$_ProductListModel.fromJson;
@@ -308,10 +289,10 @@ abstract class _ProductListModel implements ProductListModel {
   @override
   String get id;
   @override // 카테고리
-// required String category,
-// 제품 사진
-// required String photoUrl,
-// 브랜드 명
+  String get category;
+  @override // 제품 사진
+  String get thumbnailImage;
+  @override // 브랜드 명
   String get brand;
   @override // 제품 이름
   String get productName;
@@ -320,14 +301,8 @@ abstract class _ProductListModel implements ProductListModel {
   @override // 가격
   @PriceConverter()
   String get price;
-  @override // 평점 점수의 총합
-// 나중에 총 수/ 리뷰 수 = 평균 평점 구현
-  int get totalScore;
-  @override
-  int get reivewCount;
   @override // 제품 등록 시간
-  @JsonKey(fromJson: _createdAtFromJson, toJson: _createdAtToJson)
-  Timestamp get createdAt;
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_ProductListModelCopyWith<_$_ProductListModel> get copyWith =>

@@ -4,9 +4,11 @@ import 'package:petskin/src/core/view/tabbar_page/tabbar_page.dart';
 import 'package:petskin/src/features/feedback/view/user_app_feedback.dart';
 import 'package:petskin/src/features/product/view/detail_product_page.dart';
 import 'package:petskin/src/features/product/view/home_page.dart';
+import 'package:petskin/src/features/product/view/home_search_page.dart';
 import 'package:petskin/src/features/product/view/ingredient_list_page.dart';
 import 'package:petskin/src/features/product/view/product_list_page.dart';
-import 'package:petskin/src/features/product/view/search_page.dart';
+import 'package:petskin/src/features/product/view/push_search_page.dart';
+import 'package:petskin/src/features/product/view/search_result_page.dart';
 import 'package:petskin/src/features/user/view/setting_page.dart';
 
 @MaterialAutoRouter(
@@ -18,9 +20,11 @@ import 'package:petskin/src/features/user/view/setting_page.dart';
     AutoRoute(page: ProductListPage),
     AutoRoute(page: DetailProductPage),
     AutoRoute(page: TabbarPage),
-    AutoRoute(page: SearchPage),
+    AutoRoute(page: PushSearchPage),
     AutoRoute(page: SettingPage),
     AutoRoute(page: IngredientListPage),
+    AutoRoute(page: HomeSearchPage),
+    AutoRoute(page: SearchResultPage),
   ],
 )
 class $AppRouter {}

@@ -37,6 +37,7 @@ class ProductListItem extends StatelessWidget {
                 photoUrl,
               ),
             ),
+            const SizedBox(width: 16),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

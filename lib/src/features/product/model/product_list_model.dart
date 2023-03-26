@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
@@ -11,9 +10,9 @@ class ProductListModel with _$ProductListModel {
   const factory ProductListModel({
     required String id,
     // 카테고리
-    // required String category,
+    required String category,
     // 제품 사진
-    // required String photoUrl,
+    required String thumbnailImage,
     // 브랜드 명
     required String brand,
     // 제품 이름
@@ -21,24 +20,19 @@ class ProductListModel with _$ProductListModel {
     // 제품 용량
     required String volume,
     // 가격
-    @PriceConverter()
-        required String price,
+    @PriceConverter() required String price,
+   // 제품 등록 시간
+    required DateTime createdAt,
+
     // 평점 점수의 총합
     // 나중에 총 수/ 리뷰 수 = 평균 평점 구현
-    required int totalScore,
-    required int reivewCount,
-    // 제품 등록 시간
-    @JsonKey(fromJson: _createdAtFromJson, toJson: _createdAtToJson)
-        required Timestamp createdAt,
+    // required int totalScore,
+    // required int reivewCount,
   }) = _ProductListModel;
 
   factory ProductListModel.fromJson(Map<String, dynamic> json) =>
       _$ProductListModelFromJson(json);
 }
-
-// 타임스탬프 변환
-Timestamp _createdAtToJson(Timestamp createdAt) => createdAt;
-Timestamp _createdAtFromJson(Timestamp json) => json;
 
 // int타입 가격을 화폐 타입의 String으로 변환
 class PriceConverter implements JsonConverter<String, int> {
