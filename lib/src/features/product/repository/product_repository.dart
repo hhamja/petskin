@@ -19,7 +19,7 @@ class ProductRepository {
 
   // 제품 리스트 받기
   Future<List<ProductListModel>> getProductList() async {
-    final List response = await _productRef.select('*').limit(5);
+    final List response = await _productRef.select().limit(5);
 
     final List<ProductListModel> productList =
         response.map((e) => ProductListModel.fromJson(e)).toList();

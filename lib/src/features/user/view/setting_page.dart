@@ -13,10 +13,11 @@ class SettingPage extends StatelessWidget {
       body: Column(
         children: [
           SettingTile(
-              onTap: () {
-                // 공지사항 웹뷰 페이지 이동
-              },
-              title: '공지사항'),
+            onTap: () {
+              // 공지사항 웹뷰 페이지 이동
+            },
+            title: '공지사항',
+          ),
           SettingTile(
               onTap: () {
                 // 이용약관

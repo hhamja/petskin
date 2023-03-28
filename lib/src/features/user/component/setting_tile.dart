@@ -14,7 +14,7 @@ class SettingTile extends StatelessWidget {
       title: Text(
         title,
         style: const TextStyle(
-          fontSize: 16,
+          fontSize: 18,
           color: TEXT_COLOR,
         ),
       ),
