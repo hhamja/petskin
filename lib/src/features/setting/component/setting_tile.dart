@@ -10,11 +10,11 @@ class SettingTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 21),
+      contentPadding: const EdgeInsets.symmetric(vertical: 3, horizontal: 16),
       title: Text(
         title,
         style: const TextStyle(
-          fontSize: 18,
+          fontSize: 20,
           color: TEXT_COLOR,
         ),
       ),

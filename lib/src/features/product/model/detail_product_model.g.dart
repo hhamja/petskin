@@ -6,6 +6,7 @@ part of 'detail_product_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+// ignore: non_constant_identifier_names
 _$_DetailProductModel _$$_DetailProductModelFromJson(
         Map<String, dynamic> json) =>
     _$_DetailProductModel(
@@ -18,6 +19,7 @@ _$_DetailProductModel _$$_DetailProductModelFromJson(
       createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
+// ignore: non_constant_identifier_names
 Map<String, dynamic> _$$_DetailProductModelToJson(
         _$_DetailProductModel instance) =>
     <String, dynamic>{

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
 import 'package:petskin/src/config/constant/firebase_constant.dart';
 import 'package:petskin/src/config/router/app_router.gr.dart';
+import 'package:petskin/src/core/component/async_value/custom_error_data.dart';
 import 'package:petskin/src/core/component/default_layout/default_layout.dart';
 import 'package:petskin/src/core/component/icon_button/custom_back_icon_bt.dart';
 import 'package:petskin/src/core/component/loading/circular_loading.dart';
@@ -37,15 +38,13 @@ class ProductListPage extends ConsumerWidget {
         ),
       ],
       body: productList.when(
-        error: (error, stackTrace) => const Center(
-          child: Text('에러'),
-        ),
+        error: (error, stackTrace) => const CustomErrorData(),
         loading: () => const CustomCircularLoading(),
         data: (data) => ListView.separated(
           itemCount: data.length,
           controller: _controller,
           separatorBuilder: (context, index) => const Divider(
-            color: LIGHT_GREY_COLOR,
+            color: DEEP_LIGHT_GREY_COLOR,
             thickness: 1,
             height: 0,
           ),

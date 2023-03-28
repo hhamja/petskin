@@ -21,4 +21,3 @@ final ingredientProvider = FutureProvider.autoDispose
   return ingredientList;
 });
 
-Future x() async {}

@@ -10,12 +10,12 @@ final productRepositoryProvider = Provider<ProductRepository>((ref) {
   return ProductRepository();
 });
 
-final supabase = Supabase.instance.client;
-
 class ProductRepository {
-  final _productRef = supabase.from(SupabseConstant.productRef);
+  final _productRef = Supabase.instance.client.from(SupabseConstant.productRef);
+  final _ingredientEditRequestRef =
+      Supabase.instance.client.from(SupabseConstant.ingredientEditRequestRef);
   final _productIngredientRef =
-      supabase.from(SupabseConstant.productIngredientRef);
+      Supabase.instance.client.from(SupabseConstant.productIngredientRef);
 
   // 제품 리스트 받기
   Future<List<ProductListModel>> getProductList() async {
@@ -90,5 +90,25 @@ class ProductRepository {
   Future removeAllSearchIndex() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('searchList');
+  }
+
+  // 제품 데이터 검색하기
+  Future<List<ProductListModel>> searchProduct(String query) async {
+    // ignore: unnecessary_string_interpolations
+    final String formattedQuery = "${query.split(' ').join('&')}";
+
+    final List response = await _productRef
+        .select()
+        .textSearch("brand_productname", formattedQuery);
+    final List<ProductListModel> searchProductList =
+        response.map((e) => ProductListModel.fromJson(e)).toList();
+
+    return searchProductList;
+  }
+
+  // 성분 수정 요청
+  Future addIngredientEditRequest(brand, productname) async {
+    await _ingredientEditRequestRef
+        .insert({'productname': '$brand $productname'});
   }
 }

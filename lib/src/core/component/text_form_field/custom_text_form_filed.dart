@@ -10,6 +10,8 @@ class CustomTextFormField extends StatefulWidget {
   final void Function(String)? onChanged;
   final void Function()? onTap;
   final FocusNode? focusNode;
+  final int? maxLine;
+  final int? maxLength;
 
   const CustomTextFormField({
     required this.controller,
@@ -20,6 +22,8 @@ class CustomTextFormField extends StatefulWidget {
     this.onTap,
     super.key,
     this.onChanged,
+    this.maxLine,
+    this.maxLength,
   });
 
   @override
@@ -57,10 +61,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       ),
       autocorrect: false,
       textInputAction: TextInputAction.done,
-      maxLines: 1,
+      maxLines: widget.maxLine,
       showCursor: true,
       controller: widget.controller,
-      maxLength: 50,
+      maxLength: widget.maxLength,
       textAlignVertical: TextAlignVertical.center,
       textAlign: TextAlign.left,
       maxLengthEnforcement: MaxLengthEnforcement.enforced,

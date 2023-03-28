@@ -4,6 +4,7 @@ class DefaultLayout extends StatelessWidget {
   final Widget body;
   final Widget? title;
   final Widget? leading;
+  final Widget? bottomNavigationBar;
   final List<Widget>? actions;
 
   const DefaultLayout({
@@ -11,6 +12,7 @@ class DefaultLayout extends StatelessWidget {
     this.title,
     this.leading,
     this.actions,
+    this.bottomNavigationBar,
     Key? key,
   }) : super(key: key);
 
@@ -32,6 +34,10 @@ class DefaultLayout extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: body,
+      ),
+      bottomSheet: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+        child: bottomNavigationBar,
       ),
     );
   }

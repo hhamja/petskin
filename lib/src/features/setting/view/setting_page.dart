@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:petskin/src/features/user/component/setting_tile.dart';
+import 'package:petskin/src/config/router/app_router.gr.dart';
+import 'package:petskin/src/features/setting/component/setting_tile.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -13,8 +15,8 @@ class SettingPage extends StatelessWidget {
       body: Column(
         children: [
           SettingTile(
-            onTap: () {
-              // 공지사항 웹뷰 페이지 이동
+            onTap: () async{
+              context.router.push(const AppNoticeRoute());
             },
             title: '공지사항',
           ),

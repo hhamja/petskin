@@ -41,11 +41,12 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
+                  padding: const EdgeInsets.only(left: 16.0),
                   child: Text(
-                    '검색...',
+                    '브랜드, 제품명 검색하기…',
                     style: TextStyle(
                       color: Colors.grey[600]!,
+                      height: 1.25,
                       fontSize: 14,
                     ),
                   ),

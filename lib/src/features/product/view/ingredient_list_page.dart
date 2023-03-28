@@ -1,18 +1,27 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
 import 'package:petskin/src/core/component/default_layout/default_layout.dart';
+import 'package:petskin/src/core/component/dialog/small_dialog.dart';
 import 'package:petskin/src/core/component/icon_button/custom_back_icon_bt.dart';
 import 'package:petskin/src/core/component/text_button/custom_outline_text_button.dart';
 import 'package:petskin/src/features/product/component/ingredient_composition.dart';
+import 'package:petskin/src/features/product/component/ingredient_info_bottom_sheet.dart';
 import 'package:petskin/src/features/product/component/ingredient_list_tile.dart';
 import 'package:petskin/src/features/product/model/ingredient_model.dart';
+import 'package:petskin/src/features/product/repository/product_repository.dart';
 
 class IngredientListPage extends StatefulWidget {
   final List<IngredientModel> ingredientList;
+  final String productName;
+  final String brand;
 
   const IngredientListPage({
     super.key,
     required this.ingredientList,
+    required this.productName,
+    required this.brand,
   });
 
   @override
@@ -40,7 +49,7 @@ class _IngredientListPageState extends State<IngredientListPage> {
       }
     }).toList();
 
-    // 등급 별로 4개의 ewg list 세분화
+    // ignore: avoid_function_literals_in_foreach_calls
     ewgList.forEach((e) {
       if (e == '0') {
         undeterminedRisk.add(e);
@@ -70,13 +79,16 @@ class _IngredientListPageState extends State<IngredientListPage> {
 
     return DefaultLayout(
       leading: const CustomBackButton(),
-      title: const Text(
-        '성분',
-      ),
+      title: const Text('성분'),
       actions: [
         InkWell(
           onTap: () async {
-            // 성분에 대한 추가정보를 알려주는 info 아이콘
+            // 바텀시트 띄우기
+            showModalBottomSheet(
+              context: context,
+              backgroundColor: Colors.transparent,
+              builder: (context) => const IngredientInfoBottomSheet(),
+            );
           },
           child: const Padding(
             padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
@@ -99,7 +111,7 @@ class _IngredientListPageState extends State<IngredientListPage> {
               ),
             ),
             const Divider(
-              color: LIGHT_GREY_COLOR,
+              color: DEEP_LIGHT_GREY_COLOR,
               thickness: 5,
             ),
             const SizedBox(height: 21),
@@ -149,19 +161,56 @@ class _IngredientListPageState extends State<IngredientListPage> {
               },
               itemCount: widget.ingredientList.length,
               separatorBuilder: (context, index) => const Divider(
-                color: LIGHT_GREY_COLOR,
+                color: DEEP_LIGHT_GREY_COLOR,
                 thickness: 1,
                 height: 0,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 34.0),
-              child: CustomOutlineTextButton(
-                w: MediaQuery.of(context).size.width,
-                h: 50,
-                content: '성분 정보 수정 요청하기',
-                onPressed: () {},
-                color: TEXT_COLOR,
+            Consumer(
+              builder: (context, ref, child) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 34.0),
+                child: CustomOutlineTextButton(
+                  w: MediaQuery.of(context).size.width,
+                  h: 50,
+                  content: '성분 정보 수정 요청하기',
+                  onPressed: () async {
+                    // 성분요청 데이터 table에 넣기
+                    showDialog(
+                      context: context,
+                      builder: (context) => CustomSmallDialog(
+                        cancelFun: () async => context.router.pop(),
+                        cancelText: '아니요',
+                        completeText: '보내기',
+                        content:
+                            '${widget.brand} ${widget.productName}의\n성분 정보를 수정 요청하시겠어요?',
+                        completeFun: () async {
+                          // 서버에 성분 수정 요청 데이터 저장
+                          ref
+                              .read(productRepositoryProvider)
+                              .addIngredientEditRequest(
+                                  widget.brand, widget.productName);
+                          // 감사 다이얼로그 띄우기
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              Future.delayed(const Duration(seconds: 2), () {
+                                Navigator.of(context).pop();
+                              });
+                              return const AlertDialog(
+                                title: Text(
+                                  '소중한 의견 고마워요 :)',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    );
+                  },
+                  color: TEXT_COLOR,
+                ),
               ),
             ),
           ],

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
-// import 'package:petskin/src/config/theme/text_theme.dart';
 
 class CustomFilledTextButton extends StatelessWidget {
   final double? w;
   final double? h;
   final String content;
-  final Function() onPressed;
+  final Function()? onPressed;
   final Color? backgroundColor;
 
   const CustomFilledTextButton({
@@ -34,11 +33,8 @@ class CustomFilledTextButton extends StatelessWidget {
         child: Text(
           content,
           style: const TextStyle(
-            // 14-20
-            // fontSize: 18,
-            // letterSpacing: 0.1,
-            // fontWeight: FontWeight.w500,
-            color: TEXT_COLOR,
+            fontSize: 16,
+            color: WHITE_COLOR,
           ),
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
 
-// 흰색 백그라운드에 outline이 핑크색
 class CustomOutlineTextButton extends StatelessWidget {
   final double w;
   final double h;
@@ -40,6 +39,7 @@ class CustomOutlineTextButton extends StatelessWidget {
           style: TextStyle(
             fontSize: 16,
             color: color,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),

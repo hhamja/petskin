@@ -1,10 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:petskin/src/features/product/model/product_list_model.dart';
 import 'package:petskin/src/features/product/repository/product_repository.dart';
 
 final searchListProvider =
     StateNotifierProvider<SearchListNotifier, List<String>>(
         (ref) => SearchListNotifier(ref.watch(productRepositoryProvider)));
 
+// 최근 검색어 StateNotifier
 class SearchListNotifier extends StateNotifier<List<String>> {
   final ProductRepository repository;
   SearchListNotifier(this.repository) : super([]);
@@ -29,3 +31,12 @@ class SearchListNotifier extends StateNotifier<List<String>> {
     state = await repository.removeAllSearchIndex() ?? [];
   }
 }
+
+final searchProductListProvider = FutureProvider.autoDispose
+    .family<List<ProductListModel>, String>((ref, query) async {
+  final ProductRepository repository = ref.watch(productRepositoryProvider);
+
+  // 검색 제품 리스트 받기
+  final searchProductList =   await repository.searchProduct(query);
+  return searchProductList;
+});

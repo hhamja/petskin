@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
+import 'package:petskin/src/features/feedback/view/home_product_add_request_page.dart';
 import 'package:petskin/src/features/product/view/home_page.dart';
 import 'package:petskin/src/features/product/view/home_search_page.dart';
-import 'package:petskin/src/features/product/view/push_search_page.dart';
-import 'package:petskin/src/features/user/view/setting_page.dart';
+import 'package:petskin/src/features/setting/view/setting_page.dart';
 
 class TabbarPage extends StatefulWidget {
   const TabbarPage({super.key});
@@ -23,7 +23,7 @@ class _TabbarPageState extends State<TabbarPage>
   void initState() {
     super.initState();
     controller =
-        TabController(length: 3, vsync: this, animationDuration: Duration.zero);
+        TabController(length: 4, vsync: this, animationDuration: Duration.zero);
     controller.addListener(tabListener);
   }
 
@@ -48,23 +48,24 @@ class _TabbarPageState extends State<TabbarPage>
         children: const [
           HomePage(),
           HomeSearchPage(),
+          HomeProductAddRequestPage(),
           SettingPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        // 선택 O 탭바 아이템 스타일
         selectedItemColor: PRIMARY_COLOR,
-        unselectedItemColor: TEXT_COLOR,
-        selectedFontSize: 10,
-        unselectedFontSize: 10,
+        // 선택 X 탭바 아이템 스타일
+        unselectedItemColor: DARK_GREY_COLOR,
         type: BottomNavigationBarType.fixed,
-        onTap: (int index) {
-          controller.animateTo(index);
-        },
+        onTap: (int index) => controller.animateTo(index),
         backgroundColor: WHITE_COLOR,
         currentIndex: tabbarIndex,
+
         items: const [
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.house),
+            activeIcon: Icon(CupertinoIcons.house_fill),
             label: '홈',
           ),
           BottomNavigationBarItem(
@@ -72,7 +73,13 @@ class _TabbarPageState extends State<TabbarPage>
             label: '검색',
           ),
           BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.plus_app),
+            activeIcon: Icon(CupertinoIcons.plus_app_fill),
+            label: '제품 요청',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.gear),
+            activeIcon: Icon(CupertinoIcons.gear_alt_fill),
             label: '설정',
           ),
         ],

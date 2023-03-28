@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import 'package:petskin/src/features/product/model/product_list_model.dart';
 
 part 'product_model.freezed.dart';
 part 'product_model.g.dart';

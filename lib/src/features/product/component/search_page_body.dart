@@ -15,7 +15,6 @@ class SearchPageBody extends ConsumerStatefulWidget {
 
 class _SearchPageBodyState extends ConsumerState<SearchPageBody> {
   final FocusNode focusNode = FocusNode();
-
   final TextEditingController textController = TextEditingController();
   final ScrollController scrollController = ScrollController();
 
@@ -53,21 +52,28 @@ class _SearchPageBodyState extends ConsumerState<SearchPageBody> {
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    width: 1,
-                    color: focusNode.hasFocus ? PRIMARY_COLOR : Colors.grey),
+                  width: 1,
+                  color: textController.text.isNotEmpty
+                      ? PRIMARY_COLOR
+                      : GREY_COLOR,
+                ),
               ),
             ),
             child: Row(
               children: [
                 Expanded(
                   child: CustomTextFormField(
+                    maxLine: 1,
+                    maxLength: 50,
                     focusNode: focusNode,
                     controller: textController,
+                    // 확인 버튼 클릭시
                     onFieldSubmitted: textController.text == ''
                         ? null
                         : (value) async {
                             // 결과 페이지로 이동
-                            context.router.push(const SearchResultRoute());
+                            context.router.push(
+                                SearchResultRoute(query: textController.text));
                             // 최근검색어에 추가
                             ref
                                 .read(searchListProvider.notifier)
@@ -133,6 +139,11 @@ class _SearchPageBodyState extends ConsumerState<SearchPageBody> {
                   itemCount: searchList.length,
                   itemBuilder: (context, index) => ListTile(
                     contentPadding: EdgeInsets.zero,
+                    onTap: () async {
+                      // 결과 페이지로 이동
+                      context.router
+                          .push(SearchResultRoute(query: searchList[index]));
+                    },
                     title: Text(
                       searchList[index],
                       maxLines: 3,

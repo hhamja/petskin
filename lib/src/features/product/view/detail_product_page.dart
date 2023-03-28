@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
 import 'package:petskin/src/config/constant/firebase_constant.dart';
 import 'package:petskin/src/config/router/app_router.gr.dart';
+import 'package:petskin/src/core/component/async_value/custom_error_data.dart';
 import 'package:petskin/src/core/component/default_layout/default_layout.dart';
 import 'package:petskin/src/core/component/icon_button/custom_back_icon_bt.dart';
 import 'package:petskin/src/core/component/loading/circular_loading.dart';
@@ -35,10 +36,7 @@ class DetailProductPage extends ConsumerWidget {
         ),
       ],
       body: product.when(
-        // 에러 커스텀 위젯으로 다루기
-        error: (error, stackTrace) => const Center(
-          child: Text('네트워크 에러'),
-        ),
+        error: (error, stackTrace) => const CustomErrorData(),
         loading: () => const CustomCircularLoading(),
         data: (product) => SingleChildScrollView(
           child: Column(
@@ -60,7 +58,7 @@ class DetailProductPage extends ConsumerWidget {
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 29.0),
                 child: Divider(
-                  color: LIGHT_GREY_COLOR,
+                  color: DEEP_LIGHT_GREY_COLOR,
                   thickness: 3,
                 ),
               ),
@@ -84,7 +82,12 @@ class DetailProductPage extends ConsumerWidget {
                   return ProductIngredientBox(
                     onTap: () async {
                       context.router.push(
-                          IngredientListRoute(ingredientList: ingredientList));
+                        IngredientListRoute(
+                          ingredientList: ingredientList,
+                          productName: product.productName,
+                          brand: product.brand,
+                        ),
+                      );
                     },
                     totalIngredient: ingredientList.length,
                     riskIngredient: ewgRiskList.length,

@@ -6,6 +6,7 @@ part of 'ingredient_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+// ignore: non_constant_identifier_names
 _$_IngredientModel _$$_IngredientModelFromJson(Map<String, dynamic> json) =>
     _$_IngredientModel(
       id: json['id'] as int,
@@ -14,6 +15,7 @@ _$_IngredientModel _$$_IngredientModelFromJson(Map<String, dynamic> json) =>
       ewg: json['ewg'] as String,
     );
 
+// ignore: non_constant_identifier_names
 Map<String, dynamic> _$$_IngredientModelToJson(_$_IngredientModel instance) =>
     <String, dynamic>{
       'id': instance.id,
