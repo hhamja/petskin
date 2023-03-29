@@ -14,22 +14,31 @@
 import 'package:auto_route/auto_route.dart' as _i15;
 import 'package:flutter/material.dart' as _i16;
 
-import '../../core/view/splash/splash.dart' as _i1;
-import '../../core/view/tabbar_page/tabbar_page.dart' as _i6;
-import '../../features/feedback/view/home_product_add_request_page.dart'
+import '../../features/common/presentation/screen/splash/splash.dart' as _i1;
+import '../../features/common/presentation/screen/tabbar_page/tabbar_page.dart'
+    as _i6;
+import '../../features/feedback/presentation/screen/home_product_add_request_page.dart'
     as _i14;
-import '../../features/feedback/view/product_add_request_page.dart' as _i13;
-import '../../features/feedback/view/user_app_feedback.dart' as _i3;
-import '../../features/product/model/ingredient_model.dart' as _i17;
-import '../../features/product/view/detail_product_page.dart' as _i5;
-import '../../features/product/view/home_page.dart' as _i2;
-import '../../features/product/view/home_search_page.dart' as _i10;
-import '../../features/product/view/ingredient_list_page.dart' as _i9;
-import '../../features/product/view/product_list_page.dart' as _i4;
-import '../../features/product/view/push_search_page.dart' as _i7;
-import '../../features/product/view/search_result_page.dart' as _i11;
-import '../../features/setting/view/notice_page.dart' as _i12;
-import '../../features/setting/view/setting_page.dart' as _i8;
+import '../../features/feedback/presentation/screen/product_add_request_page.dart'
+    as _i13;
+import '../../features/feedback/presentation/screen/user_app_feedback.dart'
+    as _i3;
+import '../../features/product/domain/ingredient_model.dart' as _i17;
+import '../../features/product/presentation/screen/detail_product_page.dart'
+    as _i5;
+import '../../features/product/presentation/screen/home_page.dart' as _i2;
+import '../../features/product/presentation/screen/home_search_page.dart'
+    as _i10;
+import '../../features/product/presentation/screen/ingredient_list_page.dart'
+    as _i9;
+import '../../features/product/presentation/screen/product_list_page.dart'
+    as _i4;
+import '../../features/product/presentation/screen/push_search_page.dart'
+    as _i7;
+import '../../features/product/presentation/screen/search_result_page.dart'
+    as _i11;
+import '../../features/setting/presentation/screen/notice_page.dart' as _i12;
+import '../../features/setting/presentation/screen/setting_page.dart' as _i8;
 
 class AppRouter extends _i15.RootStackRouter {
   AppRouter([_i16.GlobalKey<_i16.NavigatorState>? navigatorKey])
