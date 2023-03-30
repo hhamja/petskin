@@ -10,7 +10,7 @@ import 'package:petskin/src/features/common/presentation/widget/default_layout/d
 import 'package:petskin/src/features/common/presentation/widget/icon_button/custom_back_icon_bt.dart';
 import 'package:petskin/src/features/common/presentation/widget/loading/circular_loading.dart';
 import 'package:petskin/src/features/product/presentation/widget/product_list_item.dart';
-import 'package:petskin/src/features/product/presentation/controller/product_list_view_model.dart';
+import 'package:petskin/src/features/product/presentation/controller/product_list_controller.dart';
 
 class ProductListPage extends ConsumerWidget {
   ProductListPage({super.key});
@@ -57,7 +57,7 @@ class ProductListPage extends ConsumerWidget {
               );
             },
             brand: data[index].brand,
-            photoUrl: SupabseConstant.productImg,
+            photoUrl: data[index].thumbnailImage,
             price: data[index].price,
             productName: data[index].productName,
             volume: data[index].volume,

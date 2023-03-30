@@ -3,13 +3,13 @@ import 'package:petskin/src/features/product/data/product_repository.dart';
 import 'package:petskin/src/features/product/domain/product_list_model.dart';
 
 final searchListProvider =
-    StateNotifierProvider<SearchListNotifier, List<String>>(
-        (ref) => SearchListNotifier(ref.watch(productRepositoryProvider)));
+    StateNotifierProvider<SearchListController, List<String>>(
+        (ref) => SearchListController(ref.watch(productRepositoryProvider)));
 
 // 최근 검색어 StateNotifier
-class SearchListNotifier extends StateNotifier<List<String>> {
+class SearchListController extends StateNotifier<List<String>> {
   final ProductRepository repository;
-  SearchListNotifier(this.repository) : super([]);
+  SearchListController(this.repository) : super([]);
 
   // 검색 내용 로컬에 추가
   Future addSearchQuery(query) async {

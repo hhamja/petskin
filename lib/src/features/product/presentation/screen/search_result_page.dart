@@ -11,7 +11,7 @@ import 'package:petskin/src/features/common/presentation/widget/icon_button/cust
 import 'package:petskin/src/features/common/presentation/widget/loading/circular_loading.dart';
 import 'package:petskin/src/features/common/presentation/widget/text_button/custom_outline_text_button.dart';
 import 'package:petskin/src/features/product/presentation/widget/product_list_item.dart';
-import 'package:petskin/src/features/product/presentation/controller/search_view_model.dart';
+import 'package:petskin/src/features/product/presentation/controller/search_controller.dart';
 
 class SearchResultPage extends ConsumerWidget {
   final String query;
@@ -89,7 +89,7 @@ class SearchResultPage extends ConsumerWidget {
                     );
                   },
                   brand: productList[index].brand,
-                  photoUrl: SupabseConstant.productImg,
+                  photoUrl: productList[index].thumbnailImage,
                   price: productList[index].price,
                   productName: productList[index].productName,
                   volume: productList[index].volume,

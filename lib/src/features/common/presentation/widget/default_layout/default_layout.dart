@@ -36,7 +36,9 @@ class DefaultLayout extends StatelessWidget {
         child: body,
       ),
       bottomSheet: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+        padding: bottomNavigationBar == null
+            ? EdgeInsets.zero
+            : const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: bottomNavigationBar,
       ),
     );

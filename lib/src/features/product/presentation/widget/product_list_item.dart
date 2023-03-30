@@ -35,6 +35,7 @@ class ProductListItem extends StatelessWidget {
               width: 70,
               child: Image.network(
                 photoUrl,
+                fit: BoxFit.cover,
               ),
             ),
             const SizedBox(width: 16),

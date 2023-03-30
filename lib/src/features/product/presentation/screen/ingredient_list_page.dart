@@ -34,6 +34,7 @@ class _IngredientListPageState extends State<IngredientListPage> {
   late List<String> mediumRiskEwgList;
   late List<String> highRiskEwgList;
   late Color color;
+  final ScrollController controller = ScrollController();
 
   // ewg 4개의 등급으로 리스트 분할
   void splitEwgList(list) async {
@@ -70,13 +71,12 @@ class _IngredientListPageState extends State<IngredientListPage> {
     lowRiskEwgList = [];
     mediumRiskEwgList = [];
     highRiskEwgList = [];
+    // 성분정보 분할
     splitEwgList(widget.ingredientList);
   }
 
   @override
   Widget build(BuildContext context) {
-    final ScrollController controller = ScrollController();
-
     return DefaultLayout(
       leading: const CustomBackButton(),
       title: const Text('성분'),
@@ -123,49 +123,59 @@ class _IngredientListPageState extends State<IngredientListPage> {
                 color: TEXT_COLOR,
               ),
             ),
-            ListView.separated(
-              controller: controller,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                // ewg만 추출한 List
-                final List<String> ewgList =
-                    widget.ingredientList.map((ingredient) {
-                  final int dashIndex = ingredient.ewg.indexOf('-');
-                  if (dashIndex != -1) {
-                    // '-' 이후 문자열 추출
-                    return ingredient.ewg.substring(dashIndex + 1);
-                  } else {
-                    // 그대로 반환
-                    return ingredient.ewg;
-                  }
-                }).toList();
-                final String ewg = ewgList[index];
-                if (ewg == '0') {
-                  color = NO_EWG_COLOR;
-                } else if (ewg == '1' || ewg == '2') {
-                  color = LOW_EWG_COLOR;
-                } else if (ewg == '3' ||
-                    ewg == '4' ||
-                    ewg == '5' ||
-                    ewg == '6') {
-                  color = MEDIUM_EWG_COLOR;
-                } else {
-                  color = HIGH_EWG_COLOR;
-                }
-                return IngredientListTile(
-                  color: color,
-                  ewg: widget.ingredientList[index].ewg,
-                  name: widget.ingredientList[index].korName,
-                  purpose: widget.ingredientList[index].blendingPurpose,
-                );
-              },
-              itemCount: widget.ingredientList.length,
-              separatorBuilder: (context, index) => const Divider(
-                color: DEEP_LIGHT_GREY_COLOR,
-                thickness: 1,
-                height: 0,
-              ),
-            ),
+            widget.ingredientList.isNotEmpty
+                // 성분 정보가 있는 경우
+                ? ListView.separated(
+                    controller: controller,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      // ewg만 추출한 List
+                      final List<String> ewgList =
+                          widget.ingredientList.map((ingredient) {
+                        final int dashIndex = ingredient.ewg.indexOf('-');
+                        if (dashIndex != -1) {
+                          // '-' 이후 문자열 추출
+                          return ingredient.ewg.substring(dashIndex + 1);
+                        } else {
+                          // 그대로 반환
+                          return ingredient.ewg;
+                        }
+                      }).toList();
+                      final String ewg = ewgList[index];
+                      if (ewg == '0') {
+                        color = NO_EWG_COLOR;
+                      } else if (ewg == '1' || ewg == '2') {
+                        color = LOW_EWG_COLOR;
+                      } else if (ewg == '3' ||
+                          ewg == '4' ||
+                          ewg == '5' ||
+                          ewg == '6') {
+                        color = MEDIUM_EWG_COLOR;
+                      } else {
+                        color = HIGH_EWG_COLOR;
+                      }
+                      return IngredientListTile(
+                        color: color,
+                        ewg: widget.ingredientList[index].ewg,
+                        name: widget.ingredientList[index].korName,
+                        purpose: widget.ingredientList[index].blendingPurpose,
+                      );
+                    },
+                    itemCount: widget.ingredientList.length,
+                    separatorBuilder: (context, index) => const Divider(
+                      color: DEEP_LIGHT_GREY_COLOR,
+                      thickness: 1,
+                      height: 0,
+                    ),
+                  )
+                // 성분 정보가 없는 경우
+                : const Padding(
+                    padding: EdgeInsets.only(top: 21.0),
+                    child: Text(
+                      '성분정보가 없어요 :(',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
             Consumer(
               builder: (context, ref, child) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 34.0),

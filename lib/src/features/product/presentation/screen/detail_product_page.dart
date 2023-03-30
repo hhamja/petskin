@@ -11,7 +11,7 @@ import 'package:petskin/src/features/common/presentation/widget/icon_button/cust
 import 'package:petskin/src/features/common/presentation/widget/loading/circular_loading.dart';
 import 'package:petskin/src/features/product/presentation/widget/detail_product.dart';
 import 'package:petskin/src/features/product/presentation/widget/product_ingredient.dart';
-import 'package:petskin/src/features/product/presentation/controller/detail_product_view_model.dart';
+import 'package:petskin/src/features/product/presentation/controller/detail_product_controller.dart';
 
 class DetailProductPage extends ConsumerWidget {
   final String id;
@@ -47,8 +47,12 @@ class DetailProductPage extends ConsumerWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.5,
-                child: Image.network(SupabseConstant.productImg),
+                child: Image.network(
+                  product.fullImage,
+                  fit: BoxFit.cover,
+                ),
               ),
+              const SizedBox(height: 21),
               ProductDetailBox(
                 brand: product.brand,
                 price: product.price,
@@ -56,7 +60,7 @@ class DetailProductPage extends ConsumerWidget {
                 volume: product.volume,
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(vertical: 29.0),
+                padding: EdgeInsets.symmetric(vertical: 21.0),
                 child: Divider(
                   color: DEEP_LIGHT_GREY_COLOR,
                   thickness: 3,

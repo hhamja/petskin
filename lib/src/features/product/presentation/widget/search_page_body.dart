@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
 import 'package:petskin/src/config/router/app_router.gr.dart';
 import 'package:petskin/src/features/common/presentation/widget/text_form_field/custom_text_form_filed.dart';
-import 'package:petskin/src/features/product/presentation/controller/search_view_model.dart';
+import 'package:petskin/src/features/product/presentation/controller/search_controller.dart';
 
 class SearchPageBody extends ConsumerStatefulWidget {
   const SearchPageBody({super.key});

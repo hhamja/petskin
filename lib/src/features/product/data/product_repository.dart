@@ -21,7 +21,7 @@ class ProductRepository implements ProductRepositoryInterface {
   // 제품 리스트 받기
   @override
   Future<List<ProductListModel>> getProductList() async {
-    final List response = await _productRef.select().limit(5);
+    final List response = await _productRef.select();
 
     final List<ProductListModel> productList =
         response.map((e) => ProductListModel.fromJson(e)).toList();
@@ -104,13 +104,26 @@ class ProductRepository implements ProductRepositoryInterface {
   @override
   Future<List<ProductListModel>> searchProduct(String query) async {
     // ignore: unnecessary_string_interpolations
-    final String formattedQuery = "${query.split(' ').join('&')}";
+    final String formattedQuery = "${query.trim().split(' ').join('&')}";
 
-    final List response = await _productRef
+    final response = await _productRef
         .select()
         .textSearch("brand_productname", formattedQuery);
-    final List<ProductListModel> searchProductList =
-        response.map((e) => ProductListModel.fromJson(e)).toList();
+
+    List<ProductListModel> searchProductList;
+    if (response is Map) {
+      // 검색 결과가 한개
+      searchProductList = [
+        ProductListModel.fromJson(response as Map<String, dynamic>),
+      ];
+    } else if (response is List) {
+      // 검색 결과가 여러개
+      searchProductList =
+          response.map((e) => ProductListModel.fromJson(e)).toList();
+    } else {
+      // 검색 결과가 없음
+      searchProductList = [];
+    }
 
     return searchProductList;
   }
