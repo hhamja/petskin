@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
 import 'package:petskin/src/features/common/presentation/widget/default_layout/default_layout.dart';
 import 'package:petskin/src/features/common/presentation/widget/dialog/small_dialog.dart';
-import 'package:petskin/src/features/common/presentation/widget/icon_button/custom_back_icon_bt.dart';
+import 'package:petskin/src/features/common/presentation/widget/icon_button/custom_back_button.dart';
 import 'package:petskin/src/features/common/presentation/widget/text_button/custom_outline_text_button.dart';
 import 'package:petskin/src/features/product/data/product_repository.dart';
 import 'package:petskin/src/features/product/domain/ingredient_model.dart';

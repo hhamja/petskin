@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
 import 'package:petskin/src/config/constant/app_name.dart';
 import 'package:petskin/src/features/common/presentation/widget/default_layout/default_layout.dart';
-import 'package:petskin/src/features/common/presentation/widget/icon_button/custom_back_icon_bt.dart';
+import 'package:petskin/src/features/common/presentation/widget/icon_button/custom_back_button.dart';
 import 'package:petskin/src/features/common/presentation/widget/text_button/custom_fill_text_button.dart';
 import 'package:petskin/src/features/common/presentation/widget/text_form_field/custom_text_form_filed.dart';
 import 'package:petskin/src/features/feedback/data/feedback_repository.dart';
@@ -119,7 +119,7 @@ class _UserAppFeedbackPageState extends State<UserAppFeedbackPage> {
                 }
               : null,
           backgroundColor:
-              textController.text != '' ? PRIMARY_COLOR : GREY_COLOR,
+              textController.text != '' ? PRIMARY_COLOR : LIGHT_GREY_COLOR,
         ),
       ),
     );

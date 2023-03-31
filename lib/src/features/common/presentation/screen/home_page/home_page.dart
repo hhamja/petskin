@@ -16,12 +16,11 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
-          child: Container(
-            width: 300,
-            height: 5,
-            color: Colors.red,
+          child: Image.asset(
+            'assets/app_icon/petpick.png',
           ),
         ),
+        leadingWidth: MediaQuery.of(context).size.width * 0.2,
         title: GestureDetector(
           onTap: () async {
             context.router.push(const PushSearchRoute());

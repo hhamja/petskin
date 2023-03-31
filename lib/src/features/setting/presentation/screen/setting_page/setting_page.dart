@@ -15,20 +15,17 @@ class SettingPage extends StatelessWidget {
       body: Column(
         children: [
           SettingTile(
-            onTap: () async{
-              context.router.push(const AppNoticeRoute());
-            },
+            onTap: () async => context.router.push(const AppNoticeRoute()),
             title: '공지사항',
           ),
           SettingTile(
-              onTap: () {
-                // 이용약관
-              },
+              onTap: () async => context.router.push(
+                    const TermsDetailRoute(),
+                  ),
               title: '이용약관'),
           SettingTile(
-              onTap: () {
-                // 개인정보 처리방침
-              },
+              onTap: () async =>
+                  context.router.push(const PrivacyPolicyDetailRoute()),
               title: '개인정보 처리방침'),
         ],
       ),

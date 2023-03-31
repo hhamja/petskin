@@ -28,7 +28,7 @@ class _ProductAddRequestBodyState extends State<ProductAddRequestBody> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 55),
+        const SizedBox(height: 34),
         const Text(
           '찾으시는 제품이 없나요?',
           style: TextStyle(

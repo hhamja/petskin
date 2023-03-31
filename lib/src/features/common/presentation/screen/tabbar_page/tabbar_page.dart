@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petskin/src/config/constant/app_color.dart';
 import 'package:petskin/src/features/feedback/presentation/screen/home_product_add_request_page.dart';
-import 'package:petskin/src/features/product/presentation/screen/home_page.dart';
+import 'package:petskin/src/features/common/presentation/screen/home_page/home_page.dart';
 import 'package:petskin/src/features/product/presentation/screen/home_search_page.dart';
-import 'package:petskin/src/features/setting/presentation/screen/setting_page.dart';
+import 'package:petskin/src/features/setting/presentation/screen/setting_page/setting_page.dart';
 
 class TabbarPage extends StatefulWidget {
   const TabbarPage({super.key});

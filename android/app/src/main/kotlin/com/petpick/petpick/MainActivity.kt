@@ -1,4 +1,4 @@
-package com.petskin.petskin
+package com.petpick.petpick
 
 import io.flutter.embedding.android.FlutterActivity
 

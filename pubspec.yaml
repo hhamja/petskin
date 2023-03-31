@@ -20,6 +20,11 @@ dependencies:
   supabase_flutter: ^1.5.0
   flutter_riverpod: ^2.3.2
   shared_preferences: ^2.0.20
+  change_app_package_name: ^1.1.0
+  flutter_launcher_icons: ^0.12.0
+  flutter_dotenv: ^5.0.2
+  webview_flutter: ^4.0.2
+  
   
 dev_dependencies:
   flutter_test:
@@ -34,7 +39,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/app_icon/
     - assets/pets/
+    # api key를 숨기기 위한 env
+    - assets/config/.env  
   fonts:
     # 노토 산즈 kr
     - family: NotoSansCJKkr
@@ -45,3 +53,11 @@ flutter:
           weight: 500
         - asset: assets/fonts/NotoSansCJKkr-Bold.otf
           weight: 600
+
+
+flutter_icons:
+  android: "launcher_icon" # android manifest랑 동일해야함
+  ios: false
+  image_path_android: "assets/app_icon/app_icon.png"
+  adaptive_icon_background: "assets/app_icon/icon_background.png"
+  adaptive_icon_foreground: "assets/app_icon/icon_foreground.png"
