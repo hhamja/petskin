@@ -94,7 +94,12 @@ class SearchResultPage extends ConsumerWidget {
                   volume: productList[index].volume,
                 ),
               ),
-        error: (error, stackTrace) => const CustomErrorData(),
+        error: (error, stackTrace) => Column(
+          children: [
+            Text(error.toString()),
+            const CustomErrorData(),
+          ],
+        ),
         loading: () => const CustomCircularLoading(),
       ),
     );
