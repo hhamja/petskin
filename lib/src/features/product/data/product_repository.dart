@@ -21,7 +21,7 @@ class ProductRepository implements ProductRepositoryInterface {
   // 제품 리스트 받기
   @override
   Future<List<ProductListModel>> getProductList() async {
-    final List response = await _productRef.select();
+    final List<Map<String, dynamic>> response = await _productRef.select();
 
     final List<ProductListModel> productList =
         response.map((e) => ProductListModel.fromJson(e)).toList();

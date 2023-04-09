@@ -32,8 +32,8 @@ class SearchListController extends StateNotifier<List<String>> {
   }
 }
 
-final searchProductListProvider = FutureProvider.autoDispose
-    .family<List<ProductListModel>, String>((ref, query) async {
+final searchProductListProvider =
+    FutureProvider.family<List<ProductListModel>, String>((ref, query) async {
   final ProductRepository repository = ref.watch(productRepositoryProvider);
 
   // 검색 제품 리스트 받기
