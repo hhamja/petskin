@@ -21,9 +21,9 @@ class IngredientInfoBottomSheet extends StatelessWidget {
         horizontal: 21,
         vertical: 0,
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: const [
           SizedBox(height: 34),
           Text(
             '성분정보',
