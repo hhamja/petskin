@@ -54,7 +54,7 @@ class _TabbarPageState extends State<TabbarPage>
       ),
       bottomNavigationBar: BottomNavigationBar(
         // 선택 O 탭바 아이템 스타일
-        selectedItemColor: PRIMARY_COLOR,
+        selectedItemColor: TEXT_COLOR,
         // 선택 X 탭바 아이템 스타일
         unselectedItemColor: DARK_GREY_COLOR,
         type: BottomNavigationBarType.fixed,
@@ -70,6 +70,7 @@ class _TabbarPageState extends State<TabbarPage>
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.search),
+            activeIcon: Icon(CupertinoIcons.search_circle_fill),
             label: '검색',
           ),
           BottomNavigationBarItem(
