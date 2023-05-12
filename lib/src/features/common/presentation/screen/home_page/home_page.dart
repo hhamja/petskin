@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: Image.asset(
-            'assets/app_icon/petpick.png',
+            'assets/app_icon/byutinagae.png',
           ),
         ),
         leadingWidth: MediaQuery.of(context).size.width * 0.2,

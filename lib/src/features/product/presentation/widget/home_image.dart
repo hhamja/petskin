@@ -15,7 +15,7 @@ class HomePageImg extends StatelessWidget {
             BlendMode.color,
           ),
           child: Image.asset(
-            './assets/pets/dog22.jpg',
+            './assets/images/home_img.jpg',
             fit: BoxFit.cover,
             alignment: Alignment.center,
             width: MediaQuery.of(context).size.width,

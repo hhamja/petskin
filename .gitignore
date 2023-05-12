@@ -13,6 +13,8 @@ migrate_working_dir/
 # 파일무시
 keystore.properties
 *.env
+key.jks
+
 
 ## 다음과 같은 확장자는 전체 무시
 
